@@ -9,10 +9,15 @@ class TestMainPage1():
     @classmethod
     def setup_class(self):
         print("\nstart browser for test suite..")
+
+        # for linux
         chrome_options = Options()
         chrome_options.add_argument("no-sandbox")
         chrome_options.add_argument("--disable-extensions")
         self.browser = webdriver.Chrome('../environments/selenium_env/bin/chromedriver', options=chrome_options)
+
+        #for macOS and windows
+        #self.browser = webdriver.Chrome()
 
 
     @classmethod
@@ -33,10 +38,15 @@ class TestMainPage2():
 
     def setup_method(self):
         print("start browser for test..")
+
+        # for linux
         chrome_options = Options()
         chrome_options.add_argument("no-sandbox")
         chrome_options.add_argument("--disable-extensions")
         self.browser = webdriver.Chrome('../environments/selenium_env/bin/chromedriver', options=chrome_options)
+
+        # for macOS and windows
+        # self.browser = webdriver.Chrome()
 
     def teardown_method(self):
         print("quit browser for test..")
