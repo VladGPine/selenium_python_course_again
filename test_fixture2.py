@@ -4,6 +4,7 @@ import pytest
 
 link = "http://selenium1py.pythonanywhere.com/"
 
+
 @pytest.fixture
 def browser():
     print("\nstart browser for test..")
@@ -16,8 +17,16 @@ def browser():
 
     # for macOS and windows
     # self.browser = webdriver.Chrome()
+    yield browser
+    print('\nquit browser..')
+    browser.quit()
 
-    return browser
+
+@pytest.fixture(autouse=True)
+def prepare_data():
+    print()
+    print('preparing some critical data for every test')
+
 
 class TestMainPage1:
     def test_guest_should_see_login_link(self, browser):
