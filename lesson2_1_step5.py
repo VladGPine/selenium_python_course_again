@@ -1,6 +1,7 @@
 import math
 from selenium import webdriver
 import time
+from selenium.webdriver.chrome.options import Options
 
 def calc(x):
     return str(math.log(abs(12 * math.sin(int(x)))))
@@ -8,7 +9,11 @@ def calc(x):
 page = 'http://suninjuly.github.io/math.html'
 
 try:
-    browser = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument("no-sandbox")
+    chrome_options.add_argument("--disable-extensions")
+
+    browser = webdriver.Chrome('../environments/selenium_env/bin/chromedriver', options=chrome_options)
     browser.get(page)
 
     x = browser.find_element_by_id('input_value')
