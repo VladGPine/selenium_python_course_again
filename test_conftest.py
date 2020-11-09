@@ -1,4 +1,4 @@
-from confest import browser
+from conftest import browser
 
 
 link = "http://selenium1py.pythonanywhere.com/"
